@@ -133,7 +133,7 @@
             this.Controls.Add(this.ProjectNameTextbox);
             this.Controls.Add(this.SetProjectDetailsFormButton);
             this.Controls.Add(this.SetProjectDetailsFormLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "SetProjectDetailsForm";
             this.ShowIcon = false;

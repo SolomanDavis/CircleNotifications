@@ -185,14 +185,17 @@ namespace CircleNotifications {
         
         // Reset relevant settings to default if CircleToken changes.
         public void SetCircleToken(string newCircleToken) {
+            ClearContextOfBuilds();
+            CircleToken = newCircleToken;
+        }
+
+        public void ClearContextOfBuilds() {
             lastKnownBuildNum = 0;
             RunningBuilds = new SortedSet<int>();
             Properties.Settings.Default.LastKnownBuildNum = lastKnownBuildNum;
             Properties.Settings.Default.RunningBuilds = RunningBuilds;
             Properties.Settings.Default.DisplayedLabels = new List<ToolStripLabel>();
             Properties.Settings.Default.Save();
-
-            CircleToken = newCircleToken;
         }
 
 

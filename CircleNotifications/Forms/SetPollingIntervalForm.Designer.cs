@@ -70,7 +70,7 @@
             this.Controls.Add(this.SetPollingIntervalButton);
             this.Controls.Add(this.SetPollingIntervalTextBox);
             this.Controls.Add(this.SetPollingIntervalLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "SetPollingIntervalForm";
             this.ShowInTaskbar = false;

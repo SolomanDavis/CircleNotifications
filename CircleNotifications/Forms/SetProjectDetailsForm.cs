@@ -47,9 +47,18 @@ namespace CircleNotifications.Forms {
                     return;
                 }
             } else {
-                if (UsernameTextbox.Text != "") Properties.Settings.Default.Username = UsernameTextbox.Text;
-                if (VCSTypeTextbox.Text != "") Properties.Settings.Default.VCSType = VCSTypeTextbox.Text;
-                if (ProjectNameTextbox.Text != "") Properties.Settings.Default.ProjectName = ProjectNameTextbox.Text;
+                if (UsernameTextbox.Text != "") {
+                    Properties.Settings.Default.Username = UsernameTextbox.Text;
+                    appContext.ClearContextOfBuilds();
+                }
+                if (VCSTypeTextbox.Text != "") {
+                    Properties.Settings.Default.VCSType = VCSTypeTextbox.Text;
+                    appContext.ClearContextOfBuilds();
+                }
+                if (ProjectNameTextbox.Text != "") {
+                    Properties.Settings.Default.ProjectName = ProjectNameTextbox.Text;
+                    appContext.ClearContextOfBuilds();
+                }
             }
 
             Properties.Settings.Default.Save();
