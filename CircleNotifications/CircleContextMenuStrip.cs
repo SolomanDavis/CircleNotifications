@@ -106,16 +106,16 @@ namespace CircleNotifications {
             if (displayedBuildNums.Count == 0) { // Not populated at all so we use lastKnownBuildNum
                 buildNum = lastKnownBuildNum;
             } else {
-                buildNum = displayedBuildNums[displayedBuildNums.Count - 1];
+                buildNum = displayedBuildNums[displayedBuildNums.Count - 1] - 1; // Start populating at the oldest displayed build - 1.
             }
 
             if (displayedBuildNums.Count < numBuilds) {
                 try { // Optimized to only make two HTTP requests rather than however many is needed to match.
                     Requests requests = new Requests(appContext);
                     int difference = numBuilds - displayedBuildNums.Count;
-                    int latestBuildNumber = appContext.DeserializeBuilds(requests.RecentBuilds(1, 0))[0].build_num.Value;
+                    int mostRecentBuildNum = appContext.DeserializeBuilds(requests.RecentBuilds(1, 0))[0].build_num.Value;
 
-                    List<Build> builds = appContext.DeserializeBuilds(requests.RecentBuilds(difference, latestBuildNumber - buildNum + 1));
+                    List<Build> builds = appContext.DeserializeBuilds(requests.RecentBuilds(difference, mostRecentBuildNum - buildNum));
                     Console.WriteLine("Builds.Count: " + builds.Count);
                     foreach (Build build in builds) {
                         switch (build.status) {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CircleNotifications {
     public class User {
-        public Boolean is_user { get; set; }
+        public Boolean? is_user { get; set; }
         public string login { get; set; }
         public string avatar_url { get; set; }
         public string name { get; set; }

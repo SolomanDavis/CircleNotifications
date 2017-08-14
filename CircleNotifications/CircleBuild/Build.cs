@@ -12,8 +12,8 @@ namespace CircleNotifications {
         public string compare { get; set; }
         public PreviousSuccessfulBuild previous_successful_build { get; set; }
         public object build_parameters { get; set; }
-        public Boolean oss { get; set; }
-        public Boolean all_commit_details_truncated { get; set; }
+        public Boolean? oss { get; set; }
+        public Boolean? all_commit_details_truncated { get; set; }
         public object committer_date { get; set; }
         public string body { get; set; }
         public string usage_queued_at { get; set; }
@@ -32,26 +32,26 @@ namespace CircleNotifications {
         public string vcs_revision { get; set; }
         public object vcs_tag { get; set; }
         public int? build_num { get; set; }
-        public Boolean infrastructure_fail { get; set; }
+        public Boolean? infrastructure_fail { get; set; }
         public object committer_email { get; set; }
-        public Boolean has_artifacts { get; set; }
+        public Boolean? has_artifacts { get; set; }
         public Previous previous { get; set; }
         public string status { get; set; }
         public object committer_name { get; set; }
         public object retries { get; set; }
         public string subject { get; set; }
         public string vcs_type { get; set; }
-        public Boolean timedout { get; set; }
+        public Boolean? timedout { get; set; }
         public object dont_build { get; set; }
         public string lifecycle { get; set; }
-        public Boolean no_dependency_cache { get; set; }
+        public Boolean? no_dependency_cache { get; set; }
         public string stop_time { get; set; }
-        public Boolean ssh_disabled { get; set; }
+        public Boolean? ssh_disabled { get; set; }
         public int? build_time_millis { get; set; }
         public object picard { get; set; }
         public CircleYml circle_yml { get; set; }
         public List<Message> messages { get; set; }
-        public Boolean is_first_green_build { get; set; }
+        public Boolean? is_first_green_build { get; set; }
         public object job_name { get; set; }
         public string start_time { get; set; }
         public object canceler { get; set; }
@@ -62,7 +62,7 @@ namespace CircleNotifications {
         public string author_name { get; set; }
         public List<Node> node { get; set; }
         public string queued_at { get; set; }
-        public Boolean canceled { get; set; }
+        public Boolean? canceled { get; set; }
         public string author_email { get; set; }
     }
 }
