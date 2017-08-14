@@ -65,16 +65,7 @@ namespace CircleNotifications {
                 System.Diagnostics.Process.Start((string)label.Tag); // Open label link
             });
 
-            switch (build.status) {
-                case "success": buildLabel.Image = Properties.Resources.favicon_green_png; break;
-                case "scheduled":
-                case "queued": buildLabel.Image = Properties.Resources.favicon_grey_png; break;
-                case "running": buildLabel.Image = Properties.Resources.favicon_blue_png; break;
-                case "failed": buildLabel.Image = Properties.Resources.favicon_red_png; break;
-                case "not_run":
-                case "canceled":
-                default: buildLabel.Image = Properties.Resources.favicon_undefined_png; break;
-            }
+            UpdateLabelIcon(build.status, buildLabel);
 
             return buildLabel;
         }
@@ -87,7 +78,12 @@ namespace CircleNotifications {
             }
 
             ToolStripLabel buildLabel = (ToolStripLabel) stripCollection[0];
-            switch (build.status) {
+            UpdateLabelIcon(build.status, buildLabel);
+        }
+
+        public void UpdateLabelIcon(string status, ToolStripLabel buildLabel) {
+            switch (status) {
+                case "fixed":
                 case "success": buildLabel.Image = Properties.Resources.favicon_green_png; break;
                 case "scheduled":
                 case "queued": buildLabel.Image = Properties.Resources.favicon_grey_png; break;
@@ -159,6 +155,7 @@ namespace CircleNotifications {
 
                 Console.WriteLine("Build status: " + build.status);
                 switch (build.status) { // TODO: Review all build status possibilities for better coverage.
+                    case "fixed":
                     case "success":
                         metrics["successfulBuildNum"] = buildNum;
                         ++metrics["success"]; break;
@@ -197,6 +194,7 @@ namespace CircleNotifications {
                 UpdateBuildLabel(build);
 
                 switch (build.status) {
+                    case "fixed":
                     case "success":
                         ++metrics["success"];
                         metrics["successfulBuildNum"] = buildNum;

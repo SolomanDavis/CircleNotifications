@@ -39,6 +39,7 @@ namespace CircleNotifications {
                 notifyIcon.Icon = Properties.Resources.favicon_blue_icon;
             } else if (build != null) {
                 switch (build.status) {
+                    case "fixed":
                     case "success":
                         notifyIcon.Text = String.Format("Build #{0} was successful.", build.build_num);
                         notifyIcon.Icon = Properties.Resources.favicon_green_icon;
